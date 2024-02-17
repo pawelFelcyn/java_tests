@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - master
-      - ci
 
 jobs:
   build:
@@ -20,4 +19,4 @@ jobs:
         architecture: x64
 
     - name: Build with Maven
-      run: mvn test
+      run: mvn -B clean test
