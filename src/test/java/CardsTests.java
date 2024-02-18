@@ -35,4 +35,16 @@ public class CardsTests {
                 .then()
                 .statusCode(404);
     }
+
+    @Test
+    public void getAllCards_shouldReturnOkAndCollectionOfCardsInTheBody(){
+        RestAssured.baseURI = "https://api.magicthegathering.io/v1";
+        Response response = given()
+                .when()
+                .get("/cards");
+        response.then()
+                .statusCode(200);
+
+        assertTrue(response.jsonPath().getList("cards").size() > 0);
+    }
 }
